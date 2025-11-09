@@ -342,23 +342,23 @@ local PlayerState = {} do
 
 	-- Save state and set up for freecam
 	function PlayerState.Push()
-		for name in pairs(coreGuis) do
-			coreGuis[name] = StarterGui:GetCoreGuiEnabled(Enum.CoreGuiType[name])
-			StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType[name], false)
-		end
-		for name in pairs(setCores) do
-			setCores[name] = StarterGui:GetCore(name)
-			StarterGui:SetCore(name, false)
-		end
-		local playergui = LocalPlayer:FindFirstChildOfClass("PlayerGui")
-		if playergui then
-			for _, gui in pairs(playergui:GetChildren()) do
-				if gui:IsA("ScreenGui") and gui.Enabled then
-					screenGuis[#screenGuis + 1] = gui
-					gui.Enabled = false
-				end
-			end
-		end
+		-- for name in pairs(coreGuis) do
+		-- 	coreGuis[name] = StarterGui:GetCoreGuiEnabled(Enum.CoreGuiType[name])
+		-- 	StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType[name], false)
+		-- end
+		-- for name in pairs(setCores) do
+		-- 	setCores[name] = StarterGui:GetCore(name)
+		-- 	StarterGui:SetCore(name, false)
+		-- end
+		-- local playergui = LocalPlayer:FindFirstChildOfClass("PlayerGui")
+		-- if playergui then
+		-- 	for _, gui in pairs(playergui:GetChildren()) do
+		-- 		if gui:IsA("ScreenGui") and gui.Enabled then
+		-- 			screenGuis[#screenGuis + 1] = gui
+		-- 			gui.Enabled = false
+		-- 		end
+		-- 	end
+		-- end
 
 		cameraFieldOfView = Camera.FieldOfView
 		Camera.FieldOfView = 70
@@ -370,7 +370,7 @@ local PlayerState = {} do
 		cameraFocus = Camera.Focus
 
 		mouseIconEnabled = UserInputService.MouseIconEnabled
-		UserInputService.MouseIconEnabled = false
+		-- UserInputService.MouseIconEnabled = false
 
 		mouseBehavior = UserInputService.MouseBehavior
 		UserInputService.MouseBehavior = Enum.MouseBehavior.Default
@@ -378,17 +378,17 @@ local PlayerState = {} do
 
 	-- Restore state
 	function PlayerState.Pop()
-		for name, isEnabled in pairs(coreGuis) do
-			StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType[name], isEnabled)
-		end
-		for name, isEnabled in pairs(setCores) do
-			StarterGui:SetCore(name, isEnabled)
-		end
-		for _, gui in pairs(screenGuis) do
-			if gui.Parent then
-				gui.Enabled = true
-			end
-		end
+		-- for name, isEnabled in pairs(coreGuis) do
+		-- 	StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType[name], isEnabled)
+		-- end
+		-- for name, isEnabled in pairs(setCores) do
+		-- 	StarterGui:SetCore(name, isEnabled)
+		-- end
+		-- for _, gui in pairs(screenGuis) do
+		-- 	if gui.Parent then
+		-- 		gui.Enabled = true
+		-- 	end
+		-- end
 
 		Camera.FieldOfView = cameraFieldOfView
 		cameraFieldOfView = nil
